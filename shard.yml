@@ -1,0 +1,13 @@
+name: aoc_2023
+version: 0.1.0
+
+authors:
+  - Sebastián Aedo <your-email-here>
+
+targets:
+  aoc_2023:
+    main: src/aoc_2023.cr
+
+crystal: '>= 1.10.1'
+
+license: MIT
