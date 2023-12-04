@@ -11,13 +11,13 @@ module Day1
       str.lines.each do |line|
         first = line.each_char.find! { |c| c.number? }
         second = line.reverse.each_char.find! { |c| c.number? }
-        sum += ("" + first + second).to_i
+        sum += String::Builder.new.tap { |s| s << first << second }.to_s.to_i
       end
 
       sum
     end
 
-    def second_case_to_n(str : String)
+    def word_to_n(str : String)
       mapping = {
         "one" => "1",
         "two" => "2",
@@ -43,10 +43,10 @@ module Day1
 
       str.lines.each do |line|
         first_match = regex.match!(line)
-        first_value = second_case_to_n first_match[1]
+        first_value = word_to_n first_match[1]
 
         second_match = last_regex.match(line)
-        second_value = (second_match.try { |v| second_case_to_n(v[1]) }) || first_value
+        second_value = (second_match.try { |v| word_to_n(v[1]) }) || first_value
 
         sum += (first_value + second_value).to_i
       end
